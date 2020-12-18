@@ -1,0 +1,16 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5>Dashboard</h5>
+  <hr>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/visualise">View visualizations</a>
+  </nav>
+  <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/create-employee">Add Budget</a>
+</div>
+
+
+<app-budget-list></app-budget-list>
+<app-chart></app-chart>
+<app-barchart></app-barchart>
+<app-progressbar></app-progressbar>
+
+<h1 class='vis'>To Logout Please Click Here: </h1><input type="button" (click)="onLogout()" value="Logout" />

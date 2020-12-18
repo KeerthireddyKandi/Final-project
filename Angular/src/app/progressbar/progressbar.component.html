@@ -1,0 +1,15 @@
+<h1 class='head2'>4. PROGRESS BAR VISUALISATION:</h1>
+<h1 class="head3">How much is the expense in a month's budget for each entry has been shown in terms of progress bar</h1>
+<ul *ngFor="let budget of Budget; let i = index">
+  <li>
+
+  </li>
+  <progress-bar [progress]="(budget.expense/budget.value)*100" [color-degraded]= "{'30' : '#ff0000', '45': '#3333ff', '75': '#00e600'}"></progress-bar>
+
+</ul>
+
+
+
+
+
+

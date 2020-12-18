@@ -1,0 +1,36 @@
+<div class="Lcontainer">
+<p *ngIf="Budget.length <= 0" class="no-data text-center">There is no employee added yet!</p>
+<h1> 1. TABLE VISUALISATION:</h1>
+
+  <table class="table table-bordered" *ngIf="Budget.length > 0">
+    <thead class="table-success">
+      <tr>
+        <th scope="col">Budget Name</th>
+        <th scope="col">Budget Value</th>
+        <th scope="col">Month Name</th>
+        <th scope="col">Monthly Expense</th>
+        <th scope="col center">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let budget of Budget; let i = index">
+
+        <td>{{budget.name}}</td>
+        <td>{{budget.value}}</td>
+        <td>{{budget.month}}</td>
+        <td>{{budget.expense}}</td>
+
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/edit-employee/', budget._id]">
+            <button type="button" class="btn btn-success btn-sm">Edit</button>
+          </span>
+          <span class="delete" (click)="removeBudget(budget, i)">
+
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

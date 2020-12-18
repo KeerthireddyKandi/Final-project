@@ -1,0 +1,75 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5>Dashboard</h5>
+  <hr>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/visualise">View visualizations</a>
+  </nav>
+  <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/create-employee">Add Budget</a>
+</div>
+
+ <div class="row justify-content-center">
+   <div class="col-md-4 register-employee">
+
+     <div class="card card-outline-secondary">
+       <div class="card-header">
+         <h3 class="mb-0">Edit Budget</h3>
+       </div>
+       <div class="card-body">
+         <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+           <div class="form-group">
+             <label for="inputName">Budget Name:</label>
+             <input class="form-control" type="text" formControlName="name">
+             <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+               Budget Name is required.
+             </div>
+           </div>
+           <div class="form-group">
+             <label for="inputEmail3">Budget Value:</label>
+             <input class="form-control" type="text" formControlName="value">
+
+             <div class="invalid-feedback" *ngIf="submitted && myForm.value.errors?.required">
+               Enter Budget value.
+             </div>
+             <div class="invalid-feedback" *ngIf="submitted && myForm.value.errors?.pattern">
+               Enter valid value.
+             </div>
+           </div>
+
+           <div class="form-group">
+             <label for="inputPassword3">Choose Month</label>
+             <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+               formControlName="month">
+               <option value="">select..</option>
+               <option *ngFor="let budgetProfile of BudgetProfile" value="{{budgetProfile}}">{{budgetProfile}}
+               </option>
+             </select>
+
+             <div class="invalid-feedback" *ngIf="submitted && myForm.month.errors?.required">
+               Choose month.
+             </div>
+           </div>
+
+           <div class="form-group">
+             <label for="inputVerify3">Enter This Month expense:</label>
+             <input class="form-control" type="text" formControlName="expense">
+
+             <div class="invalid-feedback" *ngIf="submitted && myForm.expense.errors?.required">
+               Enter Month expense.
+             </div>
+             <div class="invalid-feedback" *ngIf="submitted && myForm.expense.errors?.pattern">
+               Enter Numbers Only
+             </div>
+           </div>
+
+           <div class="form-group">
+             <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <h1>To Logout Please Click Here: </h1><input type="button" (click)="onLogout()" value="Logout" />
