@@ -8,6 +8,7 @@ import { User } from './user.model';
   providedIn: 'root'
 })
 export class UserService {
+  baseUri:string = 'http://localhost:3000/api';
   selectedUser: User = {
     fullName: '',
     email: '',
@@ -17,14 +18,17 @@ export class UserService {
   noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
   constructor(private http: HttpClient) { }
   postUser(user: User){
-    return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader);
+    let url = `${this.baseUri}/register`;
+    return this.http.post(url,user,this.noAuthHeader);
   }
 
   login(authCredentials) {
-    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials,this.noAuthHeader);
+    let url = `${this.baseUri}/authenticate`;
+    return this.http.post(url, authCredentials,this.noAuthHeader);
   }
   getUserProfile() {
-    return this.http.get(environment.apiBaseUrl + '/userProfile');
+    let url = `${this.baseUri}/userProfile`;
+    return this.http.get(url);
   }
   setToken(token: string) {
     localStorage.setItem('token', token);
